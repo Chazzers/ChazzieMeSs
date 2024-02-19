@@ -18,4 +18,8 @@ export interface AddProductBody {
   size: string;
   price: string;
   brand: string;
+  slug: string;
+}
+export interface EditProductBody extends AddProductBody {
+  id: string;
 }

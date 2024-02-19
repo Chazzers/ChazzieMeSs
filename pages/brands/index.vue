@@ -7,18 +7,13 @@ import TitleFlex from "~/components/TitleFlex.vue";
 import { useCmsData } from "~/stores/cms-data";
 
 const cmsData = useCmsData();
-
-// if (!cmsData.data[0].id) {
-//   await useFetch("/api/content/get-all-brand-data");
-// }
-// console.log(cmsData.data);
 </script>
 
 <template>
   <section>
     <TitleFlex><PageTitle>Merken</PageTitle></TitleFlex>
     <AddLink url="/brands/add-brand">Merk toevoegen</AddLink>
-    <BrandsList :brandsAmount="cmsData.data.length">
+    <BrandsList v-if="cmsData.data[0].id" :brandsAmount="cmsData.data.length">
       <BrandSingle
         v-for="({ name, image, slug, description }, index) in cmsData.data"
         :brandName="name"
@@ -28,5 +23,6 @@ const cmsData = useCmsData();
         :index="index"
       />
     </BrandsList>
+    <BrandsList v-else :brandsAmount="1">No brands yet</BrandsList>
   </section>
 </template>

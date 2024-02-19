@@ -38,6 +38,7 @@ const slugName = ref("");
       <TextInputField title="Maat" name="size" placeholder="36-41" />
       <TextInputField title="Prijs €" name="price" placeholder="250" />
       <HiddenInputField name="brand" :value="route.params.brand" />
+      <HiddenInputField name="slug" :value="slugName" />
       <AddCancelContainer>
         <CancelButton :url="`/brands/${route.params.brand}`"
           >Cancel</CancelButton

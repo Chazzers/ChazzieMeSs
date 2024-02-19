@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const body: AddBrandBody = await readBody(event);
   const cmsData = useCmsData();
 
-  body.image = "/assets/images/" + body.image;
+  body.image = `/assets/images/${body.image}`;
 
   const brand = await prisma.brand.create({
     data: {

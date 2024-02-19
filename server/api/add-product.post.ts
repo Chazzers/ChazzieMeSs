@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   if (!currentBrand) return;
 
-  body.image = `${body.image}`;
+  body.image = `/assets/images/${body.image}`;
 
   const data: Prisma.ProductCreateInput = {
     name: body.name,
@@ -20,6 +20,7 @@ export default defineEventHandler(async (event) => {
     color: body.color,
     size: body.size,
     price: body.price,
+    slug: body.slug,
     brand: { connect: currentBrand },
   };
   await prisma.product.create({

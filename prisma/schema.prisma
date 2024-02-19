@@ -33,6 +33,7 @@ model Product {
   color       String
   size        String
   price       String
+  slug        String
   brandId     String @db.ObjectId
   brand       Brand  @relation(fields: [brandId], references: [id])
 }

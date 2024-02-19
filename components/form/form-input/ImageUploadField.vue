@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { buttonStyles } from "~/components/component-styles/button-styles";
 import { buttonTransparentStyles } from "~/components/component-styles/button-styles";
+import HiddenInputField from "./HiddenInputField.vue";
 
 const { title, value } = defineProps<{ title: string; value?: string }>();
 
@@ -54,6 +55,7 @@ if (value) {
     >
       {{ title }} <span>+</span>
     </label>
+
     <input
       @change="handleFileChange"
       type="file"

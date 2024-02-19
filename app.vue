@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import SideBar from "~/components/SideBar.vue";
+import NavigationComponent from "~/components/navigation/NavigationComponent.vue";
 import SectionWrapper from "~/components/SectionWrapper.vue";
 </script>
 
 <template>
-  <div class="flex flex-row">
-    <SideBar></SideBar>
+  <div class="flex flex-row pt-8">
+    <NavigationComponent></NavigationComponent>
     <SectionWrapper>
       <NuxtPage />
     </SectionWrapper>

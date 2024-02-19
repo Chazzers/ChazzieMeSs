@@ -11,9 +11,6 @@ const { brandName, brandImg, brandLink, brandDescr, index } = defineProps<{
 </script>
 
 <template>
-  <!-- <article
-    class="flex items-center border-b last:border-b-0 border-solid border-slate-400 even:bg-slate-100 gap-4 p-2"
-  > -->
   <article
     :class="[
       `grid border-b last:border-b-0 border-solid border-slate-400 even:bg-slate-100 gap-4 p-2 [grid-column:1/5] items-center [grid-template-columns:subgrid]`,

@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import AddLink from "~/components/buttons/AddLink.vue";
 import ProductSingle from "~/components/products/ProductSingle.vue";
+import ProductContainer from "~/components/products/ProductContainer.vue";
 import ProductsList from "~/components/products/ProductsList.vue";
+
 import PageTitle from "~/components/PageTitle.vue";
 import FormTitle from "~/components/FormTitle.vue";
 import TitleFlex from "~/components/TitleFlex.vue";
@@ -39,7 +41,7 @@ if (!currentBrand) {
       "
       :productsAmount="currentBrand.products.length"
     >
-      <ProductSingle
+      <ProductContainer
         v-if="currentBrand"
         v-for="{
           name,
@@ -48,14 +50,20 @@ if (!currentBrand) {
           color,
           size,
           price,
+          slug,
         } in currentBrand.products"
-        :name="name"
-        :productType="productType"
-        :image="image"
-        :color="color"
-        :size="size"
-        :price="price"
-      />
+        :slug="slug"
+        :brandSlug="route.params.brand"
+      >
+        <ProductSingle
+          :name="name"
+          :productType="productType"
+          :image="image"
+          :color="color"
+          :size="size"
+          :price="price"
+        />
+      </ProductContainer>
     </ProductsList>
 
     <ProductsList v-else :productsAmount="1">No products yet</ProductsList>

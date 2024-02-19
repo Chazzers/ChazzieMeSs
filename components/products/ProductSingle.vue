@@ -16,7 +16,7 @@ const { name, productType, image, color, size, price } = defineProps<{
     <div class="w-full h-auto">
       <img
         class="w-full object-cover object-center h-64 md:h-96"
-        :src="`/assets/images/${image}`"
+        :src="`${image}`"
         :alt="`Image of ${name}`"
       />
     </div>
