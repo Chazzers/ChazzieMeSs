@@ -36,33 +36,21 @@ if (value) {
 </script>
 
 <template>
-  <div class="my-2 flex flex-row w-full gap-4 justify-start items-center">
+  <div class="my-2 flex w-full flex-row items-center justify-start gap-4">
     <div
-      :class="`w-32 h-32 border border-solid rounded-full overflow-clip ${
+      :class="`h-32 w-32 overflow-clip rounded-full border border-solid ${
         newlyUploadedFile || value ? 'border-hibiscus-700' : 'border-slate-400'
       }`"
     >
-      <img
-        class="w-full h-full object-cover"
-        :src="newlyUploadedFile"
-        alt=""
-        v-if="newlyUploadedFile"
-      />
+      <img class="h-full w-full object-cover" :src="newlyUploadedFile" alt="" v-if="newlyUploadedFile" />
     </div>
     <label
-      :class="`${buttonStyles} ${buttonTransparentStyles} text-hibiscus-700 border-hibiscus-700 hover:bg-hibiscus-700`"
+      :class="`${buttonStyles} ${buttonTransparentStyles} border-hibiscus-700 text-hibiscus-700 hover:bg-hibiscus-700`"
       for="image"
     >
       {{ title }} <span>+</span>
     </label>
 
-    <input
-      @change="handleFileChange"
-      type="file"
-      name="image"
-      id="image"
-      placeholder="Wit"
-      class="w-full hidden"
-    />
+    <input id="image" type="file" name="image" placeholder="Wit" class="hidden w-full" @change="handleFileChange" />
   </div>
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Input } from "postcss";
 import slugify from "../../../utils/slugify";
 import InputContainer from "./InputContainer.vue";
 import InputLabel from "./InputLabel.vue";
@@ -17,18 +16,19 @@ const slugName = ref("");
 if (value) {
   slugName.value = value;
 }
+defineEmits<{ (e: "changedSlugName", str: string): void }>();
 </script>
 
 <template>
   <InputContainer>
     <InputLabel :id="name">{{ title }}</InputLabel>
     <input
+      :id="name"
+      v-model="slugName"
       :class="`${textInputStyles}`"
       type="text"
       :name="name"
-      :id="name"
       :placeholder="placeholder"
-      v-model="slugName"
       @input="
         () => {
           if (isSlug) $emit('changedSlugName', slugify(slugName));

@@ -6,12 +6,5 @@ const { value, name } = defineProps<{
 </script>
 
 <template>
-  <input
-    class="hidden"
-    type="hidden"
-    :name="name"
-    :id="name"
-    placeholder="Wit"
-    :value="value"
-  />
+  <input :id="name" class="hidden" type="hidden" :name="name" placeholder="Wit" :value="value" />
 </template>

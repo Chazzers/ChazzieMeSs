@@ -8,6 +8,7 @@ import AddButton from "~/components/buttons/AddButton.vue";
 import CancelButton from "~/components/buttons/CancelButton.vue";
 import ImageUploadField from "~/components/form/form-input/ImageUploadField.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
+import { Methods } from "~/components/form/MethodTypes";
 const route = useRoute();
 const slugName = ref("");
 </script>
@@ -15,35 +16,29 @@ const slugName = ref("");
 <template>
   <FormContainer>
     <FormTitle>Product toevoegen</FormTitle>
-    <FormComponent action="/api/add-product" method="post">
+    <FormComponent action="/api/add-product" :method="Methods.post">
       <TextInputField
         title="Naam"
         name="name"
         placeholder="Shaper"
-        @changedSlugName="
+        :is-slug="true"
+        @changed-slug-name="
           (payload: string) => {
             slugName = payload;
           }
         "
-        :isSlug="true"
       />
       <ImageUploadField title="Product afbeelding" />
 
-      <TextInputField
-        title="Product type"
-        name="productType"
-        placeholder="Broek"
-      />
+      <TextInputField title="Product type" name="productType" placeholder="Broek" />
       <TextInputField title="Kleur" name="color" placeholder="Broek" />
       <TextInputField title="Maat" name="size" placeholder="36-41" />
       <TextInputField title="Prijs €" name="price" placeholder="250" />
       <HiddenInputField name="brand" :value="route.params.brand" />
       <HiddenInputField name="slug" :value="slugName" />
       <AddCancelContainer>
-        <CancelButton :url="`/brands/${route.params.brand}`"
-          >Cancel</CancelButton
-        >
-        <AddButton buttonType="submit">Product toevoegen</AddButton>
+        <CancelButton :url="`/brands/${route.params.brand}`">Cancel</CancelButton>
+        <AddButton button-type="submit">Product toevoegen</AddButton>
       </AddCancelContainer>
     </FormComponent>
   </FormContainer>

@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="border border-solid flex flex-col p-4 rounded-lg border-slate-400 max-w-2xl"
-  >
+  <div class="flex max-w-2xl flex-col rounded-lg border border-solid border-slate-400 p-4">
     <slot></slot>
   </div>
 </template>

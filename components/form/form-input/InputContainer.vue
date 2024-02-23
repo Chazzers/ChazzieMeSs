@@ -1,3 +1,3 @@
 <template>
-  <div class="my-2 flex flex-col w-full gap-2 items-start"><slot></slot></div>
+  <div class="my-2 flex w-full flex-col items-start gap-2"><slot></slot></div>
 </template>

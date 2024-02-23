@@ -19,12 +19,12 @@ if (value) {
   <InputContainer>
     <InputLabel :id="name">{{ title }}</InputLabel>
     <textarea
+      :id="name"
+      v-model="inputValue"
       :class="`${textInputStyles}`"
       type="textarea"
       :name="name"
-      :id="name"
       :placeholder="placeholder"
-      v-model="inputValue"
     ></textarea>
   </InputContainer>
 </template>

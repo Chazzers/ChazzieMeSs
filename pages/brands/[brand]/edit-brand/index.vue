@@ -10,12 +10,11 @@ import FormTitle from "~/components/FormTitle.vue";
 import HiddenInputFieldVue from "~/components/form/form-input/HiddenInputField.vue";
 import CancelButton from "~/components/buttons/CancelButton.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
+import { Methods } from "~/components/form/MethodTypes";
 const route = useRoute();
 const cmsData = useCmsData();
 
-const currentBrand = cmsData.data.find(
-  (item) => item.slug === route.params.brand
-);
+const currentBrand = cmsData.data.find((item) => item.slug === route.params.brand);
 if (!currentBrand) {
   await navigateTo("/brands");
 }
@@ -29,18 +28,18 @@ if (currentBrand && currentBrand.slug) {
 <template>
   <FormContainer v-if="currentBrand">
     <FormTitle>Merk bewerken</FormTitle>
-    <FormComponent method="post" action="/api/edit-brand">
+    <FormComponent :method="Methods.post" action="/api/edit-brand">
       <TextInputField
         placeholder="HIGH"
         name="name"
         title="Merk naam"
-        @changedSlugName="
+        :is-slug="true"
+        :value="currentBrand.name"
+        @changed-slug-name="
           (payload: string) => {
             slugName = payload;
           }
         "
-        :isSlug="true"
-        :value="currentBrand.name"
       />
       <ImageUploadField title="Merk afbeelding" :value="currentBrand.image" />
       <TextAreaInputField
@@ -50,17 +49,17 @@ if (currentBrand && currentBrand.slug) {
         :value="currentBrand.description"
       />
       <HiddenInputFieldVue
-        class="border border-solid rounded-sm focus:outline-none border-pink-400 focus:ring-1 focus:ring-pink-700"
+        id="slug"
+        class="rounded-sm border border-solid border-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-700"
         type="hidden"
         name="slug"
-        id="slug"
         placeholder="Wit"
         :value="slugName ? slugName : currentBrand.slug"
       />
       <HiddenInputFieldVue name="id" :value="currentBrand.id" />
       <AddCancelContainer>
         <CancelButton :url="`/brands/${$route.params.brand}`" />
-        <AddButton buttonType="submit">Merk bewerken</AddButton>
+        <AddButton button-type="submit">Merk bewerken</AddButton>
       </AddCancelContainer>
     </FormComponent>
   </FormContainer>

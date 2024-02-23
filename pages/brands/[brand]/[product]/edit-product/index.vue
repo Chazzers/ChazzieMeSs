@@ -9,24 +9,21 @@ import CancelButton from "~/components/buttons/CancelButton.vue";
 import ImageUploadField from "~/components/form/form-input/ImageUploadField.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
 import { useCmsData } from "~/stores/cms-data";
+import { Methods } from "~/components/form/MethodTypes";
 import type { Product } from "@prisma/client";
 
 const route = useRoute();
 const cmsData = useCmsData();
 const slugName = ref("");
 
-const currentBrand = cmsData.data.find(
-  (item) => item.slug === route.params.brand
-);
+const currentBrand = cmsData.data.find((item) => item.slug === route.params.brand);
 
 let currentProduct: Product | undefined;
 
 if (!currentBrand || !currentBrand.products) {
   await navigateTo("/brands");
 } else {
-  currentProduct = currentBrand.products.find(
-    (item) => item.slug === route.params.product
-  );
+  currentProduct = currentBrand.products.find((item) => item.slug === route.params.product);
   if (!currentProduct && currentBrand) {
     await navigateTo(`/brands/${currentBrand.slug}`);
   }
@@ -40,59 +37,30 @@ if (!currentBrand || !currentBrand.products) {
 <template>
   <FormContainer>
     <FormTitle>Product toevoegen</FormTitle>
-    <FormComponent
-      action="/api/edit-product"
-      method="post"
-      v-if="currentProduct"
-    >
+    <FormComponent action="/api/edit-product" :method="Methods.post" v-if="currentProduct">
       <TextInputField
         title="Naam"
         name="name"
         placeholder="Shaper"
-        @changedSlugName="
+        :is-slug="true"
+        :value="currentProduct.name"
+        @changed-slug-name="
           (payload: string) => {
             slugName = payload;
           }
         "
-        :isSlug="true"
-        :value="currentProduct.name"
       />
-      <ImageUploadField
-        title="Product afbeelding"
-        :value="currentProduct.image"
-      />
+      <ImageUploadField title="Product afbeelding" :value="currentProduct.image" />
 
-      <TextInputField
-        title="Product type"
-        name="productType"
-        placeholder="Broek"
-        :value="currentProduct.productType"
-      />
-      <TextInputField
-        title="Kleur"
-        name="color"
-        placeholder="Broek"
-        :value="currentProduct.color"
-      />
-      <TextInputField
-        title="Maat"
-        name="size"
-        placeholder="36-41"
-        :value="currentProduct.size"
-      />
-      <TextInputField
-        title="Prijs €"
-        name="price"
-        placeholder="250"
-        :value="currentProduct.price"
-      />
+      <TextInputField title="Product type" name="productType" placeholder="Broek" :value="currentProduct.productType" />
+      <TextInputField title="Kleur" name="color" placeholder="Broek" :value="currentProduct.color" />
+      <TextInputField title="Maat" name="size" placeholder="36-41" :value="currentProduct.size" />
+      <TextInputField title="Prijs €" name="price" placeholder="250" :value="currentProduct.price" />
       <HiddenInputField name="brand" :value="route.params.brand" />
       <HiddenInputField name="slug" :value="slugName" />
       <HiddenInputField name="id" :value="currentProduct.id" />
       <AddCancelContainer>
-        <CancelButton :url="`/brands/${route.params.brand}`"
-          >Cancel</CancelButton
-        >
+        <CancelButton :url="`/brands/${route.params.brand}`">Cancel</CancelButton>
         <AddButton buttonType="submit">Product bewerken</AddButton>
       </AddCancelContainer>
     </FormComponent>

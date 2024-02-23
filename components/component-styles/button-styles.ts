@@ -4,5 +4,4 @@ export const buttonStyles: string =
 export const buttonTransparentStyles: string =
   "bg-transparent border border-solid hover:text-white text-nowrap cursor-pointer";
 
-export const buttonMainColorStyles: string =
-  "bg-hibiscus-700 text-white hover:bg-hibiscus-800";
+export const buttonMainColorStyles: string = "bg-hibiscus-700 text-white hover:bg-hibiscus-800";

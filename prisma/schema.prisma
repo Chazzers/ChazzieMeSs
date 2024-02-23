@@ -37,3 +37,27 @@ model Product {
   brandId     String @db.ObjectId
   brand       Brand  @relation(fields: [brandId], references: [id])
 }
+
+model Page {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  formFields FormField[]
+  subPages   SubPage[]
+}
+
+model SubPage {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  pageId     String      @db.ObjectId
+  page       Page        @relation(fields: [pageId], references: [id])
+  formFields FormField[]
+}
+
+type FormField {
+  name          String
+  type          String
+  title         String
+  placeholder   String
+  isContentName Boolean
+  value         String
+}
