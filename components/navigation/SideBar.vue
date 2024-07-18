@@ -1,20 +1,20 @@
 <script setup lang="ts"></script>
 
 <template>
-  <nav
-    class="fixed inset-0 [contain:paint] z-10 -translate-x-full md:transform-none md:static transition-transform"
-  >
-    <div
-      class="w-4/5 flex flex-col items-left p-4 border-solid border-r border-slate-400 h-full bg-white md:w-auto md:min-h-screen"
-    >
-      <div class="flex gap-4 justify-between md:hidden">
-        <h2>Main Menu</h2>
-        <button type="button" @click="$emit('closeMenu')">Close</button>
-      </div>
-      <ul>
-        <li><NuxtLink href="/">Home</NuxtLink></li>
-        <li><NuxtLink href="/brands">Merken</NuxtLink></li>
-      </ul>
-    </div>
-  </nav>
+	<nav
+		class="fixed inset-0 z-10 -translate-x-full transition-transform [contain:paint] md:static md:transform-none"
+	>
+		<div
+			class="items-left flex h-full w-4/5 flex-col border-r border-solid border-slate-400 bg-white p-4 md:min-h-screen md:w-auto"
+		>
+			<div class="flex justify-between gap-4 md:hidden">
+				<h2>Main Menu</h2>
+				<button type="button" @click="$emit('closeMenu')">Close</button>
+			</div>
+			<ul>
+				<li><NuxtLink href="/">Home</NuxtLink></li>
+				<li><NuxtLink href="/brands">Merken</NuxtLink></li>
+			</ul>
+		</div>
+	</nav>
 </template>

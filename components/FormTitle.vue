@@ -1,3 +1,3 @@
 <template>
-  <h1 class="font-semibold text-4xl"><slot></slot></h1>
+	<h1 class="text-4xl font-semibold"><slot></slot></h1>
 </template>

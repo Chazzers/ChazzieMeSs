@@ -5,7 +5,7 @@ const cmsData = useCmsData();
 </script>
 
 <template>
-  <section class="w-full p-4">
-    <AddLink url="/create-page">Create page</AddLink>
-  </section>
+	<section class="w-full p-4">
+		<AddLink url="/create-page">Create page</AddLink>
+	</section>
 </template>

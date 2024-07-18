@@ -14,32 +14,38 @@ const slugName = ref("");
 </script>
 
 <template>
-  <FormContainer>
-    <FormTitle>Product toevoegen</FormTitle>
-    <FormComponent action="/api/add-product" :method="Methods.post">
-      <TextInputField
-        title="Naam"
-        name="name"
-        placeholder="Shaper"
-        :is-slug="true"
-        @changed-slug-name="
-          (payload: string) => {
-            slugName = payload;
-          }
-        "
-      />
-      <ImageUploadField title="Product afbeelding" />
+	<FormContainer>
+		<FormTitle>Product toevoegen</FormTitle>
+		<FormComponent action="/api/add-product" :method="Methods.post">
+			<TextInputField
+				title="Naam"
+				name="name"
+				placeholder="Shaper"
+				:is-slug="true"
+				@changed-slug-name="
+					(payload: string) => {
+						slugName = payload;
+					}
+				"
+			/>
+			<ImageUploadField title="Product afbeelding" />
 
-      <TextInputField title="Product type" name="productType" placeholder="Broek" />
-      <TextInputField title="Kleur" name="color" placeholder="Broek" />
-      <TextInputField title="Maat" name="size" placeholder="36-41" />
-      <TextInputField title="Prijs €" name="price" placeholder="250" />
-      <HiddenInputField name="brand" :value="route.params.brand" />
-      <HiddenInputField name="slug" :value="slugName" />
-      <AddCancelContainer>
-        <CancelButton :url="`/brands/${route.params.brand}`">Cancel</CancelButton>
-        <AddButton button-type="submit">Product toevoegen</AddButton>
-      </AddCancelContainer>
-    </FormComponent>
-  </FormContainer>
+			<TextInputField
+				title="Product type"
+				name="productType"
+				placeholder="Broek"
+			/>
+			<TextInputField title="Kleur" name="color" placeholder="Broek" />
+			<TextInputField title="Maat" name="size" placeholder="36-41" />
+			<TextInputField title="Prijs €" name="price" placeholder="250" />
+			<HiddenInputField name="brand" :value="route.params.brand" />
+			<HiddenInputField name="slug" :value="slugName" />
+			<AddCancelContainer>
+				<CancelButton :url="`/brands/${route.params.brand}`"
+					>Cancel</CancelButton
+				>
+				<AddButton button-type="submit">Product toevoegen</AddButton>
+			</AddCancelContainer>
+		</FormComponent>
+	</FormContainer>
 </template>
