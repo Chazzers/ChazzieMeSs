@@ -1,5 +1,5 @@
 export enum Methods {
-	get = "get",
-	post = "post",
-	dialog = "dialog",
+	GET = "get",
+	POST = "post",
+	DIALOG = "dialog",
 }

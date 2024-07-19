@@ -44,7 +44,7 @@ if (!currentBrand || !currentBrand.products) {
 		<FormComponent
 			v-if="currentProduct"
 			action="/api/edit-product"
-			:method="Methods.post"
+			:method="Methods.POST"
 		>
 			<TextInputField
 				title="Naam"

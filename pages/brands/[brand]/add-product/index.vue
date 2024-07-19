@@ -16,7 +16,7 @@ const slugName = ref("");
 <template>
 	<FormContainer>
 		<FormTitle>Product toevoegen</FormTitle>
-		<FormComponent action="/api/add-product" :method="Methods.post">
+		<FormComponent action="/api/add-product" :method="Methods.POST">
 			<TextInputField
 				title="Naam"
 				name="name"

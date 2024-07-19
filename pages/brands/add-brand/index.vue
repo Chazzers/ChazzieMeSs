@@ -24,7 +24,7 @@ const { name, description, slug, image } = defineProps<{
 <template>
 	<FormContainer>
 		<FormTitle>Merk toevoegen</FormTitle>
-		<FormComponent :method="Methods.post" action="/api/add-brand">
+		<FormComponent :method="Methods.POST" action="/api/add-brand">
 			<TextInputField
 				placeholder="HIGH"
 				name="name"

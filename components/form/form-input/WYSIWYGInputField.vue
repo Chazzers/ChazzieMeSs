@@ -29,7 +29,6 @@ const ulOpen: Ref<boolean> = ref(false);
 
 function setCurrentLine(index: number) {
 	currentLine.value = index;
-	console.log(currentLine.value);
 }
 
 function keyDownHandler(event: KeyboardEvent) {

@@ -30,7 +30,7 @@ if (currentBrand && currentBrand.slug) {
 <template>
 	<FormContainer v-if="currentBrand">
 		<FormTitle>Merk bewerken</FormTitle>
-		<FormComponent :method="Methods.post" action="/api/edit-brand">
+		<FormComponent :method="Methods.POST" action="/api/edit-brand">
 			<TextInputField
 				placeholder="HIGH"
 				name="name"

@@ -124,7 +124,7 @@ function addOption() {
 
 				<FormComponent
 					v-if="emptyFormField"
-					:method="Methods.post"
+					:method="Methods.POST"
 					action="/"
 					@submit.prevent="addFieldToPageHandler"
 				>
