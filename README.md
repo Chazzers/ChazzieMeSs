@@ -26,6 +26,20 @@ yarn install
 bun install
 ```
 
+## Environment variables
+
+This project makes use of environment variables which are the following:
+
+`DATABASE_URL=<insert mongodb url>`
+`WEBAPP_DOMAIN=<insert domain of your webapp>`
+`ID=1`
+
+To copy the env.example file run the following command:
+
+```bash
+cp .env.example .env
+```
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
