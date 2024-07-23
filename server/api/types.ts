@@ -13,7 +13,7 @@ export interface EditBrandBody extends AddBrandBody {
 export interface AddProductBody {
 	name: string;
 	productType: string;
-	image: File | string;
+	image: string;
 	color: string;
 	size: string;
 	price: string;

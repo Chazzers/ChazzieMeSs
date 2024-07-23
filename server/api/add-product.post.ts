@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
 
 	if (!currentBrand) return;
 
-	body.image = `/assets/images/${body.image}`;
-
 	const data: Prisma.ProductCreateInput = {
 		name: body.name,
 		productType: body.productType,

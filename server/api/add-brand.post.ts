@@ -4,7 +4,6 @@ import { useCmsData } from "~/stores/cms-data";
 
 export default defineEventHandler(async (event) => {
 	const body: AddBrandBody = await readBody(event);
-	const cmsData = useCmsData();
 
 	const brand = await prisma.brand.create({
 		data: {
@@ -15,6 +14,5 @@ export default defineEventHandler(async (event) => {
 		},
 	});
 
-	cmsData.data.push(brand);
-	return await sendRedirect(event, "/brands");
+	return { brand };
 });

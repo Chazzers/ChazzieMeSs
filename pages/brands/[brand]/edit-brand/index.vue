@@ -24,12 +24,62 @@ const slugName = ref("");
 if (currentBrand && currentBrand.slug) {
 	slugName.value = currentBrand.slug;
 }
+
+async function editBrand(event: SubmitEvent) {
+	const element = event.target as HTMLFormElement;
+
+	const formData = new FormData(element);
+
+	const jsonData = formDataToJSON(formData);
+
+	const res = await useFetch("/api/edit-brand", {
+		method: "POST",
+		body: jsonData,
+	});
+
+	if (res.data.value && currentBrand) {
+		const brand = res.data.value.brand;
+		currentBrand.description = brand.description;
+		currentBrand.image = brand.image;
+		currentBrand.name = brand.name;
+		currentBrand.slug = brand.slug;
+		await navigateTo(`/brands/${currentBrand.slug}`);
+	}
+}
+
+function formDataToJSON(formData: FormData): string {
+	const jsonObject: {
+		[key: string]: string | string[];
+	} = {};
+
+	formData.forEach((value, key) => {
+		if (typeof value !== "string") return;
+
+		// Check if the key already exists
+		if (jsonObject[key]) {
+			// If it's an array, push the value, otherwise, create an array
+			if (Array.isArray(jsonObject[key])) {
+				(jsonObject[key] as string[]).push(value);
+			} else {
+				jsonObject[key] = [jsonObject[key] as string, value];
+			}
+		} else {
+			jsonObject[key] = value;
+		}
+	});
+
+	return JSON.stringify(jsonObject);
+}
 </script>
 
 <template>
 	<FormContainer v-if="currentBrand">
 		<FormTitle>Edit brand</FormTitle>
-		<FormComponent :method="Methods.POST" action="/api/edit-brand">
+		<FormComponent
+			@submit.prevent="editBrand"
+			:method="Methods.POST"
+			action="/api/edit-brand"
+		>
 			<TextInputField
 				placeholder="HIGH"
 				name="name"
