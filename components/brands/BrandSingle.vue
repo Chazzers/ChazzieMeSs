@@ -32,6 +32,6 @@ const { brandName, brandImg, brandLink, brandDescr, index } = defineProps<{
 		>
 			{{ brandDescr }}
 		</p>
-		<BrandLink :to="brandLink">Bekijken</BrandLink>
+		<BrandLink :to="brandLink">Go to</BrandLink>
 	</article>
 </template>

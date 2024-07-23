@@ -6,7 +6,7 @@ const { to } = defineProps<{ to: string }>();
 <template>
 	<NuxtLink :to="`/brands/${to}`">
 		<div class="flex gap-2 px-4">
-			Bekijken <ArrowSvg class="flex-initial" />
+			<slot>Bekijken</slot> <ArrowSvg class="flex-initial" />
 		</div>
 	</NuxtLink>
 </template>

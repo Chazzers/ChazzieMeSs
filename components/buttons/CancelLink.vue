@@ -1,18 +1,15 @@
 <script lang="ts" setup>
 import { buttonStyles } from "~/components/component-styles/button-styles";
 import { buttonTransparentStyles } from "../component-styles/button-styles";
-import type { ButtonHTMLAttributes } from "vue";
 
-const { buttonType } = defineProps<{
-	buttonType: ButtonHTMLAttributes["type"];
-}>();
+const { url } = defineProps<{ url: string }>();
 </script>
 
 <template>
-	<button
+	<NuxtLink
+		:to="url"
 		:class="`${buttonStyles} ${buttonTransparentStyles} border-slate-500 text-slate-700 hover:bg-slate-500`"
-		:type="buttonType"
 	>
 		<slot>Annuleren</slot>
-	</button>
+	</NuxtLink>
 </template>

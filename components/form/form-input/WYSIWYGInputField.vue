@@ -99,8 +99,6 @@ function inputHandler(event: Event) {
 
 	inputValue.value[currentLine.value] = target.value;
 
-	console.log(inputValue.value);
-
 	currentElementString.value = "p";
 
 	const firstChar = inputValue.value[currentLine.value][0];

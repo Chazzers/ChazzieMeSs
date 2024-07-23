@@ -12,6 +12,7 @@ import SelectInputField from "./form-input/SelectInputField.vue";
 import RadioInputField from "./form-input/RadioInputField.vue";
 import CheckboxInputField from "~/components/form/form-input/CheckboxInputField.vue";
 import WYSIWYGInputField from "./form-input/WYSIWYGInputField.vue";
+import SlugInputField from "./form-input/SlugInputField.vue";
 
 export {
 	FormComponent,
@@ -28,4 +29,5 @@ export {
 	RadioInputField,
 	CheckboxInputField,
 	WYSIWYGInputField,
+	SlugInputField,
 };

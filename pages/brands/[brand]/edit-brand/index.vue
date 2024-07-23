@@ -4,11 +4,10 @@ import TextInputField from "~/components/form/form-input/TextInputField.vue";
 import ImageUploadField from "~/components/form/form-input/ImageUploadField.vue";
 import TextAreaInputField from "~/components/form/form-input/TextAreaInputField.vue";
 import FormComponent from "~/components/form/FormComponent.vue";
-import AddButton from "~/components/buttons/AddButton.vue";
+import { AddButton, CancelLink } from "~/components/buttons/export";
 import FormContainer from "~/components/form/FormContainer.vue";
 import FormTitle from "~/components/FormTitle.vue";
 import HiddenInputFieldVue from "~/components/form/form-input/HiddenInputField.vue";
-import CancelButton from "~/components/buttons/CancelButton.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
 import { Methods } from "~/components/form/MethodTypes";
 const route = useRoute();
@@ -29,7 +28,7 @@ if (currentBrand && currentBrand.slug) {
 
 <template>
 	<FormContainer v-if="currentBrand">
-		<FormTitle>Merk bewerken</FormTitle>
+		<FormTitle>Edit brand</FormTitle>
 		<FormComponent :method="Methods.POST" action="/api/edit-brand">
 			<TextInputField
 				placeholder="HIGH"
@@ -63,7 +62,7 @@ if (currentBrand && currentBrand.slug) {
 			/>
 			<HiddenInputFieldVue name="id" :value="currentBrand.id" />
 			<AddCancelContainer>
-				<CancelButton :url="`/brands/${$route.params.brand}`" />
+				<CancelLink :url="`/brands/${$route.params.brand}`" />
 				<AddButton button-type="submit">Merk bewerken</AddButton>
 			</AddCancelContainer>
 		</FormComponent>

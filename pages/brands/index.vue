@@ -11,8 +11,8 @@ const cmsData = useCmsData();
 
 <template>
 	<section>
-		<TitleFlex><PageTitle>Merken</PageTitle></TitleFlex>
-		<AddLink url="/brands/add-brand">Merk toevoegen</AddLink>
+		<TitleFlex><PageTitle>Brands</PageTitle></TitleFlex>
+		<AddLink url="/brands/add-brand">Add brand</AddLink>
 		<BrandsList
 			v-if="cmsData.data[0].id"
 			:brands-amount="cmsData.data.length"

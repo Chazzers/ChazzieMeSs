@@ -4,8 +4,7 @@ import FormComponent from "~/components/form/FormComponent.vue";
 import FormContainer from "~/components/form/FormContainer.vue";
 import HiddenInputField from "~/components/form/form-input/HiddenInputField.vue";
 import FormTitle from "~/components/FormTitle.vue";
-import AddButton from "~/components/buttons/AddButton.vue";
-import CancelButton from "~/components/buttons/CancelButton.vue";
+import { AddButton, CancelLink } from "~/components/buttons/export";
 import ImageUploadField from "~/components/form/form-input/ImageUploadField.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
 import { Methods } from "~/components/form/MethodTypes";
@@ -41,9 +40,9 @@ const slugName = ref("");
 			<HiddenInputField name="brand" :value="route.params.brand" />
 			<HiddenInputField name="slug" :value="slugName" />
 			<AddCancelContainer>
-				<CancelButton :url="`/brands/${route.params.brand}`"
-					>Cancel</CancelButton
-				>
+				<CancelLink :url="`/brands/${route.params.brand}`">
+					Cancel
+				</CancelLink>
 				<AddButton button-type="submit">Product toevoegen</AddButton>
 			</AddCancelContainer>
 		</FormComponent>

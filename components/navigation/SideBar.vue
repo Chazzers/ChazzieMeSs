@@ -13,7 +13,7 @@
 			</div>
 			<ul>
 				<li><NuxtLink href="/">Home</NuxtLink></li>
-				<li><NuxtLink href="/brands">Merken</NuxtLink></li>
+				<li><NuxtLink href="/brands">Brands</NuxtLink></li>
 			</ul>
 		</div>
 	</nav>

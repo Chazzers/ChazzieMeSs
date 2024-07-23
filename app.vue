@@ -4,10 +4,10 @@ import SectionWrapper from "~/components/SectionWrapper.vue";
 </script>
 
 <template>
-  <div class="flex flex-row pt-8">
-    <NavigationComponent></NavigationComponent>
-    <SectionWrapper>
-      <NuxtPage />
-    </SectionWrapper>
-  </div>
+	<div class="flex flex-row">
+		<NavigationComponent></NavigationComponent>
+		<SectionWrapper>
+			<NuxtPage />
+		</SectionWrapper>
+	</div>
 </template>

@@ -12,10 +12,10 @@ const closeMenu = (event: any) => {
 </script>
 
 <template>
-	<NavigationContainer @openMenu="openMenu" :open="open">
+	<NavigationContainer :open="open" @open-menu="openMenu">
 		<SideBar
-			@closeMenu="closeMenu"
 			:class="[open ? 'translate-x-0 bg-slate-950/50' : '']"
+			@close-menu="closeMenu"
 		></SideBar>
 	</NavigationContainer>
 </template>

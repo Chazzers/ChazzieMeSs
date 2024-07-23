@@ -4,8 +4,7 @@ import FormComponent from "~/components/form/FormComponent.vue";
 import FormContainer from "~/components/form/FormContainer.vue";
 import HiddenInputField from "~/components/form/form-input/HiddenInputField.vue";
 import FormTitle from "~/components/FormTitle.vue";
-import AddButton from "~/components/buttons/AddButton.vue";
-import CancelButton from "~/components/buttons/CancelButton.vue";
+import { CancelLink, AddButton } from "~/components/buttons/export";
 import ImageUploadField from "~/components/form/form-input/ImageUploadField.vue";
 import AddCancelContainer from "~/components/AddCancelContainer.vue";
 import { useCmsData } from "~/stores/cms-data";
@@ -91,9 +90,9 @@ if (!currentBrand || !currentBrand.products) {
 			<HiddenInputField name="slug" :value="slugName" />
 			<HiddenInputField name="id" :value="currentProduct.id" />
 			<AddCancelContainer>
-				<CancelButton :url="`/brands/${route.params.brand}`"
-					>Cancel</CancelButton
-				>
+				<CancelLink :url="`/brands/${route.params.brand}`">
+					Cancel
+				</CancelLink>
 				<AddButton button-type="submit">Product bewerken</AddButton>
 			</AddCancelContainer>
 		</FormComponent>

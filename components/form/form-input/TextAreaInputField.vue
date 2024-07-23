@@ -10,9 +10,27 @@ const { title, name, placeholder, value } = defineProps<{
 	value?: string;
 }>();
 const inputValue = ref("");
+const minHeight = ref("");
+const inputElement: Ref<HTMLTextAreaElement | null> = ref(null);
 if (value) {
 	inputValue.value = value;
 }
+
+function changeInputHeight() {
+	const element = inputElement.value;
+	const textAreaPadding = 8 * 2;
+
+	if (element) {
+		element.style.height = "1px";
+		element.style.height = textAreaPadding + element.scrollHeight + "px";
+	}
+}
+
+onMounted(() => {
+	if (inputElement.value) {
+		changeInputHeight();
+	}
+});
 </script>
 
 <template>
@@ -20,11 +38,13 @@ if (value) {
 		<InputLabel :id="name">{{ title }}</InputLabel>
 		<textarea
 			:id="name"
+			ref="inputElement"
 			v-model="inputValue"
-			:class="`${textInputStyles}`"
+			:class="`${textInputStyles} h-[${minHeight}px]`"
 			type="textarea"
 			:name="name"
 			:placeholder="placeholder"
+			@input="changeInputHeight"
 		></textarea>
 	</InputContainer>
 </template>

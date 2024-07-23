@@ -24,7 +24,7 @@ if (!currentBrand) {
 		<TitleFlex>
 			<PageTitle>{{ currentBrand.name }}</PageTitle>
 			<EditLink :url="`/brands/${route.params.brand}/edit-brand`">
-				Merk bewerken
+				Edit brand
 			</EditLink>
 		</TitleFlex>
 
