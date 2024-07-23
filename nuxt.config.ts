@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
 	css: ["~/assets/css/main.css"],
 	devtools: { enabled: true },
-	modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+	modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/cloudinary"],
 
 	postcss: {
 		plugins: {
@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 		mongoUrl: process.env.DATABASE_URL,
 		id: process.env.ID,
 		webDomain: process.env.WEBAPP_DOMAIN,
+		cloudinarySecret: process.env.CLOUDINARY_SECRET,
 	},
 
 	routeRules: {

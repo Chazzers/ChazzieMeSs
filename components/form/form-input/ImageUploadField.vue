@@ -19,15 +19,24 @@ const handleFileChange = async (fileData: Event) => {
 
 const handleFileUpload = async () => {
 	const body = new FormData();
+	const cloudName = "djbxfueac";
 	body.append("file", file.value);
-	await useFetch("/api/upload-image", {
-		method: "POST",
-		body,
-		onResponse(context) {
-			newlyUploadedFile.value = context.response._data.path;
-			fileName.value = context.response._data.fileName;
+	body.append("upload_preset", "jowlsui9");
+
+	const res = await fetch(
+		`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+		{
+			body: body,
+			method: "POST",
 		},
-	});
+	);
+
+	if (!res.ok) return;
+
+	const uploadResult = await res.json();
+
+	newlyUploadedFile.value = uploadResult.secure_url;
+	fileName.value = uploadResult.original_filename;
 };
 
 if (value) {
@@ -61,10 +70,13 @@ if (value) {
 		<input
 			id="image"
 			type="file"
-			name="image"
 			placeholder="Wit"
 			class="hidden w-full"
 			@change="handleFileChange"
 		/>
+		<HiddenInputField
+			name="image"
+			:value="newlyUploadedFile"
+		></HiddenInputField>
 	</div>
 </template>

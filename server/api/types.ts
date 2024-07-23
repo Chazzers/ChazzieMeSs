@@ -1,6 +1,6 @@
 export interface AddBrandBody {
 	name: string;
-	image: File | string;
+	image: string;
 	description: string;
 	slug: string;
 	products: any[];
